@@ -27,6 +27,14 @@ public class Evento {
     public Evento() {
     }
 
+    public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, long numeroMassimoPartecipanti) {
+        this.titolo = titolo;
+        this.data_evento = dataEvento;
+        this.descrizione = descrizione;
+        this.tipo_evento = tipoEvento;
+        this.numero_massimo_partecipanti = numeroMassimoPartecipanti;
+    }
+
     /*GETTER AND SETTER*/
     public long getId() {
         return id;
