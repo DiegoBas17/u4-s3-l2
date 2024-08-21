@@ -25,4 +25,47 @@ public class Persona {
     public Persona() {
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getData_di_nascita() {
+        return data_di_nascita;
+    }
+
+    public void setData_di_nascita(LocalDate data_di_nascita) {
+        this.data_di_nascita = data_di_nascita;
+    }
+
+    public Sesso getSesso() {
+        return sesso;
+    }
+
+    public void setSesso(Sesso sesso) {
+        this.sesso = sesso;
+    }
 }

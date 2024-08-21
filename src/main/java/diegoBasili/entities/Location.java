@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Location {
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID location_id;
 
     private String name;
     private String city;
@@ -22,7 +22,7 @@ public class Location {
     }
 
     public UUID getId() {
-        return id;
+        return location_id;
     }
 
     public String getName() {

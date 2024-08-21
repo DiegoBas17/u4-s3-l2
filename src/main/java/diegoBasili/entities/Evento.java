@@ -28,9 +28,9 @@ public class Evento {
     @Column(name = "numero_massimo_partecipanti")
     private long numeroMassimoPartecipanti;
 
-    /*@OneToMany
+    @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location;*/
+    private Location location_id;
 
     /* COSTRUTTORE VUOTO */
     public Evento() {
@@ -90,9 +90,9 @@ public class Evento {
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
     }
 
-   /* public Location getLocation() {
-        return location;
-    }*/
+    public Location getLocation() {
+        return location_id;
+    }
 
     @Override
     public String toString() {
@@ -103,7 +103,7 @@ public class Evento {
                 ", descrizione='" + descrizione + '\'' +
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
-                //", location=" + location.getName() +
+                ", location=" + location_id.getName() +
                 '}';
     }
 }
