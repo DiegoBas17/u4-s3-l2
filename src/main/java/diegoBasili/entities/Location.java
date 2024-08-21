@@ -21,6 +21,11 @@ public class Location {
     public Location() {
     }
 
+    public Location(String city, String name) {
+        this.city = city;
+        this.name = name;
+    }
+
     public UUID getId() {
         return location_id;
     }

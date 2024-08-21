@@ -28,15 +28,15 @@ public class EventoDAO {
         transaction.commit();
     }
 
-    public Evento findById(UUID id) throws NotFoundEx {
-        Evento evento = em.find(Evento.class, id);
+    public Evento findById(String id) throws NotFoundEx {
+        Evento evento = em.find(Evento.class, UUID.fromString(id));
         if (evento == null) {
-            throw new NotFoundEx(id);
+            throw new NotFoundEx(UUID.fromString(id));
         }
         return evento;
     }
 
-    public void findByIdAndDelete(UUID id) throws NotFoundEx {
+    public void findByIdAndDelete(String id) throws NotFoundEx {
         Evento evento = findById(id);
         em.getTransaction().begin();
         em.remove(evento);

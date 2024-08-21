@@ -25,6 +25,14 @@ public class Persona {
     public Persona() {
     }
 
+    public Persona(String nome, String cognome, String email, LocalDate data_di_nascita, Sesso sesso) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.data_di_nascita = data_di_nascita;
+        this.sesso = sesso;
+    }
+
     public UUID getId() {
         return id;
     }

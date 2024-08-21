@@ -24,6 +24,12 @@ public class Partecipazione {
     public Partecipazione() {
     }
 
+    public Partecipazione(Persona persona_id, Evento evento_id, Stato stato) {
+        this.persona_id = persona_id;
+        this.evento_id = evento_id;
+        this.stato = stato;
+    }
+
     @Override
     public String toString() {
         return "Partecipazione{" +
