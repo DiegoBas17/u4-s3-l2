@@ -5,6 +5,8 @@ import diegoBasili.exceptions.NotFoundEx;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class EventoDAO {
     private final EntityManager em;
 
@@ -26,18 +28,18 @@ public class EventoDAO {
         transaction.commit();
     }
 
-    public Evento findById(long eventoId) {
-        Evento found = em.find(Evento.class, eventoId);
-        if (found == null) throw new NotFoundEx(eventoId);
-        return found;
+    public Evento findById(UUID id) throws NotFoundEx {
+        Evento evento = em.find(Evento.class, id);
+        if (evento == null) {
+            throw new NotFoundEx(id);
+        }
+        return evento;
     }
 
-    public void findByIdAndDelete(long eventoId) {
-        Evento found = this.findById(eventoId);
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.remove(found);
-        transaction.commit();
-        System.out.println("l'evento è stato rimosso!");
+    public void findByIdAndDelete(UUID id) throws NotFoundEx {
+        Evento evento = findById(id);
+        em.getTransaction().begin();
+        em.remove(evento);
+        em.getTransaction().commit();
     }
 }

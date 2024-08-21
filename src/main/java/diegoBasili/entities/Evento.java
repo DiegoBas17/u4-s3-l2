@@ -3,40 +3,50 @@ package diegoBasili.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "evento")
 public class Evento {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "titolo")
     private String titolo;
-    @Column(name = "data evento")
-    private LocalDate data_evento;
+
+    @Column(name = "data_evento")
+    private LocalDate dataEvento;
+
     @Column(name = "descrizione")
     private String descrizione;
-    @Column(name = "tipo evento")
-    @Enumerated(EnumType.STRING)
-    private TipoEvento tipo_evento;
-    @Column(name = "numero massimo partecipanti")
-    private long numero_massimo_partecipanti;
 
-    /*COSTRUTTORE VUOTO*/
+    @Column(name = "tipo_evento")
+    @Enumerated(EnumType.STRING)
+    private TipoEvento tipoEvento;
+
+    @Column(name = "numero_massimo_partecipanti")
+    private long numeroMassimoPartecipanti;
+
+    /*@OneToMany
+    @JoinColumn(name = "location_id")
+    private Location location;*/
+
+    /* COSTRUTTORE VUOTO */
     public Evento() {
     }
 
     public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, long numeroMassimoPartecipanti) {
         this.titolo = titolo;
-        this.data_evento = dataEvento;
+        this.dataEvento = dataEvento;
         this.descrizione = descrizione;
-        this.tipo_evento = tipoEvento;
-        this.numero_massimo_partecipanti = numeroMassimoPartecipanti;
+        this.tipoEvento = tipoEvento;
+        this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
     }
 
-    /*GETTER AND SETTER*/
-    public long getId() {
+    /* GETTER AND SETTER */
+
+    public UUID getId() {
         return id;
     }
 
@@ -48,12 +58,12 @@ public class Evento {
         this.titolo = titolo;
     }
 
-    public LocalDate getData_evento() {
-        return data_evento;
+    public LocalDate getDataEvento() {
+        return dataEvento;
     }
 
-    public void setData_evento(LocalDate data_evento) {
-        this.data_evento = data_evento;
+    public void setDataEvento(LocalDate dataEvento) {
+        this.dataEvento = dataEvento;
     }
 
     public String getDescrizione() {
@@ -64,31 +74,37 @@ public class Evento {
         this.descrizione = descrizione;
     }
 
-    public TipoEvento getTipo_evento() {
-        return tipo_evento;
+    public TipoEvento getTipoEvento() {
+        return tipoEvento;
     }
 
-    public void setTipo_evento(TipoEvento tipo_evento) {
-        this.tipo_evento = tipo_evento;
+    public void setTipoEvento(TipoEvento tipoEvento) {
+        this.tipoEvento = tipoEvento;
     }
 
-    public long getNumero_massimo_partecipanti() {
-        return numero_massimo_partecipanti;
+    public long getNumeroMassimoPartecipanti() {
+        return numeroMassimoPartecipanti;
     }
 
-    public void setNumero_massimo_partecipanti(long numero_massimo_partecipanti) {
-        this.numero_massimo_partecipanti = numero_massimo_partecipanti;
+    public void setNumeroMassimoPartecipanti(long numeroMassimoPartecipanti) {
+        this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
     }
+
+   /* public Location getLocation() {
+        return location;
+    }*/
 
     @Override
     public String toString() {
         return "Evento{" +
                 "id=" + id +
                 ", titolo='" + titolo + '\'' +
-                ", data_evento=" + data_evento +
+                ", dataEvento=" + dataEvento +
                 ", descrizione='" + descrizione + '\'' +
-                ", tipo_evento=" + tipo_evento +
-                ", numero_massimo_partecipanti=" + numero_massimo_partecipanti +
+                ", tipoEvento=" + tipoEvento +
+                ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
+                //", location=" + location.getName() +
                 '}';
     }
 }
+
